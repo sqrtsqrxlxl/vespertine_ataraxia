@@ -1,5 +1,25 @@
 ---
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+import '../styles/global.css';
 
+const pageTitle = "About Me"
+
+const identity = {
+	firstName: "Forrest",
+	countryOfResidence: "UK",
+	hobbies: ["anime", "photography", "travelling", "reading"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "navy"
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -8,17 +28,44 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
+        <style define:vars={{skillColor, fontWeight, textCase}}>
+            h1 {
+                color: purple;
+                font-size: 4rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: var(--fontWeight);
+                text-transform: var(--textCase);
+            }
+        </style>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about/">About</a>
-        <a href="/blog">Blog</a>
+        <Header />
 
-		<h1>About me</h1>
+		<h1>{pageTitle}</h1>
 
         <p>
-            Hi! Forrest here. I'm currently buildling this blog with <em>Astro</em> following the tutorial. 
+            Hi! {identity.firstName} here. I'm currently buildling this blog with <em>Astro</em> following the tutorial. 
         </p>
+        <p>I am in {identity.countryOfResidence} right now.</p>
+        <p>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</p>
+        <p>Here's a list of my skills.</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+
+        {happy && <p>This means I'm happy!</p>}
+
+        {finished && <p>I have finished this tutorial!</p>}
+
+        {goal === 3 ? <p>I wish to finish in 3 days.</p> : <p>I failed.</p>}
+
+        <Footer />
+
+        <script>
+			import "../scripts/menu.js"
+		</script>
 	</body>
 </html>
