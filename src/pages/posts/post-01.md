@@ -2,15 +2,18 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'My First Blog Post'
 pubDate: 2022-07-01
+lang: 'en-GB'
 description: 'This is the first post of my new Astro blog.'
-author: 'Astro Learner'
+author: 'absqrt.'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["astro", "blogging", "learning in public"]
 ---
 
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
+<span lang="zh-CN">这是一段中文文字。在博客上应该会使用</span> Noto Serif SC <span lang="zh-CN">的字体显示。</span>
+
+<span lang="ja-JP">色を褪せた帰り道　頬を木枯らしで撫でる</span> 
 
 ## What I've accomplished
 

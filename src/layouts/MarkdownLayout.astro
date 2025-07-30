@@ -1,13 +1,17 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import "../styles/blogpost.css";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-    <p>{frontmatter.pubDate.toString().slice(0,10)}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+<BaseLayout pageTitle={frontmatter.title} pageLang={frontmatter.lang}>
+    <div class="post_header">
+        <span lang={frontmatter.lang},class="post_author">{frontmatter.author}</span>
+        <time datetime={frontmatter.pubDate},class="post_date">{frontmatter.pubDate.toString().slice(0,10)}</time>
+        <p lang={frontmatter.lang}><span class="post_description">{frontmatter.description}</span></p>
+    </div>
     <hr />
-    <slot />
+    <article>
+        <slot />
+    </article>
 </BaseLayout>

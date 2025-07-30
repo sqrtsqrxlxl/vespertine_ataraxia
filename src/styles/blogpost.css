@@ -1,0 +1,15 @@
+time {
+    font-size: 0.9rem;
+    color: #555555;
+    margin-left: 10px;
+}
+
+.post_author {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.post_description {
+    font-style: italic;
+    color: rgb(156, 156, 156);
+}

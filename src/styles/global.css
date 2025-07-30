@@ -1,6 +1,9 @@
 html {
-    background-color: #f1f5f9;
-    font-family: serif;
+    background-color: #e3fffe;
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
   }
   
   body {
@@ -13,12 +16,36 @@ html {
   
   * {
     box-sizing: border-box;
+    font-size: 1.05rem;
   }
   
   h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
   }
+
+/* i18n */
+
+*:lang(zh-CN) {
+    font-family: "Noto Serif SC", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h1:lang(zh-CN) {
+    font-family: "Noto Serif SC", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+}
+
+*:lang(ja-JP) {
+    font-family: "Noto Serif JP", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
 
  /* nav styles */
 
@@ -47,7 +74,7 @@ html {
 .nav-links a {
   display: block;
   text-align: center;
-  padding: 10px 0;
+  padding: 10px;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
