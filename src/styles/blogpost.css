@@ -4,6 +4,14 @@ time {
     margin-left: 10px;
 }
 
+ruby rt {
+  font-size: 0.5em;
+}
+
+.ref * {
+    font-size: 12px;
+}
+
 .post_author {
     text-align: right;
     margin-top: 10px;
