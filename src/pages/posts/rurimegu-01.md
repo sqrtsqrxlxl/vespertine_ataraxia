@@ -139,8 +139,4 @@ author: 'absqrt.'
 
 ***
 
-<span class="ref">
-
-**Reference.** Du Toit, Jessica. ‘Is Having Pets Morally Permissible?’ Journal of Applied Philosophy, vol. 33, no. 3, Aug. 2016, pp. 327–43. DOI.org (Crossref), https://doi.org/10.1111/japp.12106.
-
-</span>
+<span class="ref"><b>Reference.</b> Du Toit, Jessica. ‘Is Having Pets Morally Permissible?’ Journal of Applied Philosophy, vol. 33, no. 3, Aug. 2016, pp. 327–43. DOI.org (Crossref), https://doi.org/10.1111/japp.12106.</span>
