@@ -1,7 +1,10 @@
 .nav-cube {
     position: fixed;
     top: 3rem;
-    right: 420px;
+    /* Tracks the .wrapper's right margin — same 0.6 slope as
+       calc((100% - 1000px) * 0.6) — so it narrows in step with the body.
+       The -102px keeps it at 420px on a 1870px screen; floors at 2rem. */
+    right: max(2rem, calc((100vw - 1000px) * 0.6 - 102px));
     width: 56px;
     height: 56px;
     background-color: #f5f2ea;

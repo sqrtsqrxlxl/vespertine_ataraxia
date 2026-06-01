@@ -11,6 +11,8 @@ a {
     gap: 1rem;
 }
 
+
+
 .blog-card{
     position: relative;
     padding: 1.25rem 1.5rem;
@@ -51,4 +53,14 @@ a {
     padding-top: 0.5rem;
     font-size: 0.6rem;
     color: #a09e9b;
+}
+
+/* On narrow screens, stack the cards into a single column */
+/* Mobile-first design*/
+
+
+@media (max-width: 1000px) {
+    .blog-card-grid {
+        grid-template-columns: 1fr;
+    }
 }

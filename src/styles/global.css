@@ -46,10 +46,16 @@ h1 {
   max-width: 100%;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: calc((100% - 1000px) * 0.4);
-  margin-right: calc((100% - 1000px) * 0.6);
+  margin-left: calc((100% - 1000px) * 0.43);
+  margin-right: calc((100% - 1000px) * 0.57);
   position: relative;
   z-index: 1;
+}
+
+@media (max-width: 1000px){
+    .wrapper {
+        margin: 0 auto;
+    }
 }
 
 /* Background Decoration */
