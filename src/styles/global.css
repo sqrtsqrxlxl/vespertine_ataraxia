@@ -71,6 +71,7 @@ h1 {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.1;
+  z-index: -1;
 }
 
 /* i18n */
