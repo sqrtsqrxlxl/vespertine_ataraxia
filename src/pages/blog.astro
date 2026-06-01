@@ -8,6 +8,6 @@ const pageTitle = "Blog/Arcicles"
 
 <BaseLayout pageTitle={pageTitle}>
     <div class="blog-card-grid">
-        {allPosts.map((post: any) => <BlogPostCard blogTitle={post.frontmatter.title} blogDescription={post.frontmatter.description} blogDate={post.frontmatter.date} blogUrl={post.url} blogLang={post.frontmatter.lang} />)}
+        {allPosts.map((post: any) => <BlogPostCard blogTitle={post.frontmatter.title} blogDescription={post.frontmatter.description} blogDate={post.frontmatter.pubDate} blogUrl={post.url} blogLang={post.frontmatter.lang} />)}
     </div>
 </BaseLayout>

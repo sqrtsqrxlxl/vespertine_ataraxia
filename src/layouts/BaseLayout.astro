@@ -27,11 +27,8 @@ const { pageLang } = Astro.props;
     <Header />
     <div class="wrapper">
       <h1 lang={pageLang}>{pageTitle}</h1>
-      <slot />
+      <slot />  
     </div>
     <Footer />
-    <script>
-      import "../scripts/menu.js";
-    </script>
   </body>
 </html>

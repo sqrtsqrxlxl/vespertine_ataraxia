@@ -1,16 +1,16 @@
 /* Here goes global variables */
 
 :root{
-    --primary-background: #f0e8d8;
+    --primary-background: #f8f0ea;
+    --primary-font-color: #2b1903;
     --scriptive-font-family: "Space Grotesk", monospace;
-    --serif-font-family: "Noto Serif", serif;
+    --serif-font-family: "Noto Serif", Georgia, 'Times New Roman', Times, serif;
     --monospace-font-family: "JetBrains Mono", monospace;
 }
 
 html {
     background-color: var(--primary-background);
     font-family: "Noto Serif", serif;
-    
 }
 
 p {
@@ -35,9 +35,10 @@ h1 {
     font-size: 4rem;
     text-align: left;
     margin-bottom: 2rem;
-    font-family: var(--monospace-font-family);
+    font-family: var(--scriptive-font-family);
     font-weight: 900;
     font-optical-sizing: auto;
+    color: var(--primary-font-color);
 }
 
 .wrapper {

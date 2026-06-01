@@ -6,5 +6,5 @@ const { blogTitle, blogDescription, blogDate, blogUrl, blogLang } = Astro.props;
 <a href={blogUrl} class="blog-card">
     <p class="blog-card-title" lang={blogLang}>{blogTitle}</p>
     <p class="blog-card-description" lang={blogLang}>{blogDescription}</p>
-    <p class="blog-card-date">{blogDate}</p>
+    <p class="blog-card-date">{String(blogDate).slice(0, 10)}</p>
 </a>
