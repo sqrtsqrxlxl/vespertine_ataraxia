@@ -9,7 +9,7 @@ const pageTitle = "My Astro Learning Blog"
 <BaseLayout pageTitle={pageTitle}>
     <p>This is where I will post about my journey through <em>Astro</em>.</p>
 
-    <ul>
-		{allPosts.map((post: any) => <BlogPostCard blogTitle={post.frontmatter.title} blogDescription={post.frontmatter.description} blogDate={post.frontmatter.date} blogUrl={post.url} />)}
-	</ul>
+    <div class="blog-card-grid">
+        {allPosts.map((post: any) => <BlogPostCard blogTitle={post.frontmatter.title} blogDescription={post.frontmatter.description} blogDate={post.frontmatter.date} blogUrl={post.url} />)}
+    </div>
 </BaseLayout>
