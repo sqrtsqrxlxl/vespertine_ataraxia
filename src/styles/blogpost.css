@@ -48,6 +48,13 @@ blockquote {
     margin-top: 10px;
 }
 
+img {
+    display: block;
+    margin: 50px auto;
+    max-width: 100%;
+    height: auto;
+}
+
 *:lang(zh-CN) em{
     font-family: "Noto Serif SC", serif;
     font-optical-sizing: auto;
