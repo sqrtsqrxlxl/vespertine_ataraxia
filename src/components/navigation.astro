@@ -1,7 +1,28 @@
 ---
+import "../styles/nav.css"
 ---
-<div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-</div>
+<nav class="nav-cube" id="nav-cube">
+    <button class="cube-head" id="cube-toggle" aria-expanded="false">
+        <span class="cube-label">Navigation</span>
+        <span class="cube-icon">≡</span>
+    </button>
+
+    <ul class="cube-menu" id="cube-menu" aria-hidden="true">
+        <li><a href="/">About-me</a></li>
+        <li><a href="/blog">Blogs</a></li>
+        <li><a href="/works">Works</a></li>
+        <li><a href="/photography">Photography</a></li>
+    </ul>
+</nav>
+
+<script>
+const cube = document.getElementById("nav-cube");
+const toggle = document.getElementById("cube-toggle");
+
+if (cube && toggle) {
+    toggle.addEventListener("click", () => {
+        const open = cube.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(open));
+    });
+}
+</script>

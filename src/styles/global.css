@@ -1,5 +1,14 @@
+/* Here goes global variables */
+
+:root{
+    --primary-background: #f0e8d8;
+    --scriptive-font-family: "Space Grotesk", monospace;
+    --serif-font-family: "Noto Serif", serif;
+    --monospace-font-family: "JetBrains Mono", monospace;
+}
+
 html {
-    background-color: #f0e8d8;
+    background-color: var(--primary-background);
     font-family: "Noto Serif", serif;
     
 }
@@ -23,13 +32,21 @@ body {
   
 h1 {
     margin: 1rem 0;
-    font-size: 2.5rem;
+    font-size: 4rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    font-family: var(--monospace-font-family);
+    font-weight: 900;
+    font-optical-sizing: auto;
 }
 
 .wrapper {
-  width: 1200px;
+  width: 1000px;
   max-width: 100%;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: calc((100% - 1000px) * 0.4);
+  margin-right: calc((100% - 1000px) * 0.6);
   position: relative;
   z-index: 1;
 }
@@ -46,7 +63,7 @@ h1 {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 /* i18n */
@@ -61,67 +78,4 @@ h1:lang(zh-CN) {
 
 *:lang(ja-JP) {
     font-family: "Noto Serif JP", serif;
-}
-
-/* nav styles */
-
-.hamburger {
-  padding-right: 20px;
-  cursor: pointer;
-}
-
-.hamburger .line {
-  display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
-}
-
-.nav-links {
-  width: 100%;
-  top: 5rem;
-  left: 48px;
-  background-color: #ff9776;
-  display: none;
-  margin: 0;
-}
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: #ff9776;
-}
-
-.expanded {
-  display: unset;
-}
-
-@media screen and (min-width: 636px) {
-  .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
-    width: auto;
-    background: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
 }

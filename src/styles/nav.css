@@ -1,0 +1,86 @@
+.nav-cube {
+    position: fixed;
+    top: 3rem;
+    right: 420px;
+    width: 56px;
+    height: 56px;
+    background-color: #faefe3;
+    color: #4d2c01;
+    border: 2px solid #4d2c01;
+    box-shadow: 4px 4px 0 #4d2c01;
+    border-radius: 0;
+    overflow: hidden;
+    transition: width 0.1s ease, height 0.1s ease;
+    z-index: 1000;
+}
+
+/* horizontal expand on hover — grows leftward because the right edge is anchored */
+.nav-cube:hover {
+    width: 210px;
+}
+
+/* vertical expand when open (toggled by JS) */
+.nav-cube.is-open {
+    width: 210px;
+    height: 208px;
+}
+
+.cube-head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 56px;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.cube-icon {
+    flex: 0 0 53.5px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    padding-bottom: 10px;
+}
+
+.cube-label {
+    padding-left: 17px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 1.2rem;
+    padding-bottom: 6px;
+    font-family: var(--scriptive-font-family);
+    font-weight: 700;
+    font-optical-sizing: auto;
+}
+.nav-cube:hover .cube-label,
+.nav-cube.is-open .cube-label { opacity: 1; }
+
+.cube-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0 17px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-family: var(--scriptive-font-family);
+    font-weight: 500;
+    font-optical-sizing: auto;
+}
+.nav-cube.is-open .cube-menu { opacity: 1; }
+
+.cube-menu a {
+    color: #4d2c01;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.cube-menu a:hover { text-decoration: underline; }
