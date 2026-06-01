@@ -1,0 +1,10 @@
+---
+import "../styles/blogpage.css"
+const { blogTitle, blogDescription, blogDate, blogUrl } = Astro.props;
+---
+
+<div class="blog-card">
+    <a href={blogUrl} class="blog-card-title">{blogTitle}</a>
+    <p class="blog-card-description">{blogDescription}</p>
+    <p class="blog-card-date">{blogDate}</p>
+</div>

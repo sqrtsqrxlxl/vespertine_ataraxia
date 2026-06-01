@@ -20,8 +20,10 @@ const { pageLang } = Astro.props;
   <body>
     <div class="contour-bg" aria-hidden="true"></div>
     <Header />
-    <h1 lang={pageLang}>{pageTitle}</h1>
-    <slot />
+    <div class="wrapper">
+      <h1 lang={pageLang}>{pageTitle}</h1>
+      <slot />
+    </div>
     <Footer />
     <script>
       import "../scripts/menu.js";

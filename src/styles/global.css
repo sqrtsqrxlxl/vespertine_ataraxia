@@ -2,31 +2,37 @@ html {
     background-color: #f0e8d8;
     font-family: "Noto Serif", serif;
     
-  }
+}
 
-  p {
+p {
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: normal;
-  }
+}
   
-  body {
+body {
     margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
-  }
+}
   
-  * {
+* {
     box-sizing: border-box;
     font-size: 1.05rem;
-  }
+}
   
-  h1 {
+h1 {
     margin: 1rem 0;
     font-size: 2.5rem;
-  }
+}
+
+.wrapper {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
 
 /* Background Decoration */
 
@@ -57,7 +63,7 @@ h1:lang(zh-CN) {
     font-family: "Noto Serif JP", serif;
 }
 
- /* nav styles */
+/* nav styles */
 
 .hamburger {
   padding-right: 20px;

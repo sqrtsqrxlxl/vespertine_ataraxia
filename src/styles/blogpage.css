@@ -1,0 +1,24 @@
+.blog-card{
+    width: 50%;
+    position: relative;
+    padding: 0.25rem;
+    margin-bottom: 1rem;
+    color: #f7e1c7;
+}
+
+.blog-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #4d2c01;
+}
+
+.blog-card-description {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-card-date {
+    font-size: 0.8rem;
+    color: #919191;
+}
