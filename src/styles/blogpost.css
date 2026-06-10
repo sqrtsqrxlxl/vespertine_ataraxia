@@ -1,64 +1,98 @@
-time {
-    font-size: 0.9rem;
-    color: #555555;
-    margin-left: 10px;
+/* Article reading page.
+   NOTE: keep every rule scoped under an article-page class — this file
+   leaks onto all pages via the eager import.meta.glob of posts. */
+
+.crumb {
+    font-family: var(--monospace-font-family);
+    font-size: 0.72rem; color: var(--faint);
+    margin: 1.4rem 0 0;
+}
+.crumb a { color: var(--muted); text-decoration: none; }
+.crumb a:hover { color: var(--accent-ink); text-decoration: underline; }
+
+.post_header {
+    margin: 0 0 2.2rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 2px solid var(--line);
 }
 
-h2 {
-    font-size: 1.98rem;
+.post_meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 0.7rem; align-items: center;
+    font-family: var(--monospace-font-family);
+    font-size: 0.72rem; color: var(--muted);
+}
+.post_meta .sep { color: var(--faint); }
+
+.post_description {
+    margin: 0.9rem 0 0;
+    font-size: 0.95rem;
+}
+.post_description em { color: var(--muted); }
+
+/* prose — tight measure (via .wrapper.is-prose), generous leading */
+article.prose {
+    font-size: 1.02rem;
+    line-height: 1.95;
+    hanging-punctuation: first;
+}
+article.prose p { margin: 0 0 1.15em; }
+
+.prose h2 {
+    font-size: 1.6rem;
     font-family: "Noto Serif SC", serif;
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
-    padding-top: 50px;
+    padding-top: 2rem;
 }
 
-hr {
-    color: #aa6c39;
-    size: 0.5px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+.prose hr {
+    border: none;
+    border-top: 1.5px dashed var(--faint);
+    margin: 2rem 0;
 }
 
-ruby rt {
-  font-size: 0.5em;
+.prose ruby rt {
+    font-size: 0.5em;
 }
 
-.ref,
-.ref * {
+.prose .ref,
+.prose .ref * {
     font-size: 12px;
-    color: #555555;
+    color: var(--muted);
 }
 
-blockquote {
+.prose blockquote {
     display: block;
     font-size: .9em;
     overflow: auto;
-    border-left: 5px solid #cc7d38;
+    border-left: 5px solid var(--accent);
     padding: 15px 30px 15px 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-    background: #fff4e9;
+    margin: 20px 10px;
+    background: var(--card);
 }
 
-.post_author {
-    text-align: right;
-    margin-top: 10px;
-}
-
-img {
+.prose img {
     display: block;
     margin: 50px auto;
     max-width: 100%;
     height: auto;
+    border: 2px solid var(--line);
+    box-shadow: var(--shadow);
 }
 
-*:lang(zh-CN) em{
+.prose *:lang(zh-CN) em {
     font-family: "Noto Serif SC", serif;
     font-optical-sizing: auto;
     font-weight: 500;
     font-style: italic;
-    color: rgb(156, 156, 156);
+}
+
+.endmark {
+    text-align: center;
+    font-family: var(--monospace-font-family);
+    color: var(--faint);
+    margin: 2.6rem 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
 }

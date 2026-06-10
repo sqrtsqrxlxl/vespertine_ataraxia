@@ -1,28 +1,24 @@
 ---
 import "../styles/nav.css"
+
+const links = [
+    { href: "/", label: "home" },
+    { href: "/blog", label: "blog" },
+    { href: "/photography", label: "photography" },
+    { href: "/works", label: "works" },
+    { href: "/about", label: "about" },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, "") || "/";
+const isCurrent = (href: string) =>
+    href === "/" ? current === "/" : current.startsWith(href);
 ---
-<nav class="nav-cube" id="nav-cube">
-    <button class="cube-head" id="cube-toggle" aria-expanded="false">
-        <span class="cube-label">Navigation</span>
-        <span class="cube-icon">≡</span>
-    </button>
 
-    <ul class="cube-menu" id="cube-menu" aria-hidden="true">
-        <li><a href="/">About-me</a></li>
-        <li><a href="/blog">Blogs</a></li>
-        <li><a href="/works">Works</a></li>
-        <li><a href="/photography">Photography</a></li>
-    </ul>
-</nav>
-
-<script>
-const cube = document.getElementById("nav-cube");
-const toggle = document.getElementById("cube-toggle");
-
-if (cube && toggle) {
-    toggle.addEventListener("click", () => {
-        const open = cube.classList.toggle("is-open");
-        toggle.setAttribute("aria-expanded", String(open));
-    });
-}
-</script>
+<div class="topbar-inner">
+    <a class="brand" href="/"><span class="tilde">~/</span>vespertine ataraxia</a>
+    <nav class="topnav" aria-label="Site navigation">
+        {links.map((link) => (
+            <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>
+        ))}
+    </nav>
+</div>

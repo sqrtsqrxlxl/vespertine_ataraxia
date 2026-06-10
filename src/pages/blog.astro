@@ -1,13 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-/*import BlogPost from "../components/blogpost.astro";*/
 import BlogPostCard from "../components/blogpost_card.astro";
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
-const pageTitle = "Blog/Arcicles"
+
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })) as any[];
+const sorted = allPosts.sort(
+    (a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+);
+
+const byYear = new Map<number, any[]>();
+for (const post of sorted) {
+    const year = new Date(post.frontmatter.pubDate).getFullYear();
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year)!.push(post);
+}
+
+const pageTitle = "Blog / Articles"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <div class="blog-card-grid">
-        {allPosts.map((post: any) => <BlogPostCard blogTitle={post.frontmatter.title} blogDescription={post.frontmatter.description} blogDate={post.frontmatter.pubDate} blogUrl={post.url} blogLang={post.frontmatter.lang} />)}
-    </div>
+    {[...byYear.entries()].map(([year, posts]) => (
+        <section aria-label={`Posts from ${year}`}>
+            <h2 class="year-head">{year} <span class="n">{posts.length} {posts.length === 1 ? "post" : "posts"}</span></h2>
+            <ul class="post-list">
+                {posts.map((post: any) => (
+                    <BlogPostCard
+                        blogTitle={post.frontmatter.title}
+                        blogDescription={post.frontmatter.description}
+                        blogDate={post.frontmatter.pubDate}
+                        blogUrl={post.url}
+                        blogLang={post.frontmatter.lang}
+                    />
+                ))}
+            </ul>
+        </section>
+    ))}
 </BaseLayout>

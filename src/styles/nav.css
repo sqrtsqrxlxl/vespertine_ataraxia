@@ -1,89 +1,37 @@
-.nav-cube {
-    position: fixed;
-    top: 3rem;
-    /* Tracks the .wrapper's right margin — same 0.6 slope as
-       calc((100% - 1000px) * 0.6) — so it narrows in step with the body.
-       The -102px keeps it at 420px on a 1870px screen; floors at 2rem. */
-    right: max(2rem, calc((100vw - 1000px) * 0.6 - 102px));
-    width: 56px;
-    height: 56px;
-    background-color: #f5f2ea;
-    color: #4d2c01;
-    border: 2px solid #4d2c01;
-    box-shadow: 4px 4px 0 #4d2c01;
-    border-radius: 0;
-    overflow: hidden;
-    transition: width 0.1s ease, height 0.1s ease;
-    z-index: 1000;
+/* Sticky top bar navigation */
+
+.topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--primary-background);
+    border-bottom: 2px solid var(--line);
 }
 
-/* horizontal expand on hover — grows leftward because the right edge is anchored */
-.nav-cube:hover {
-    width: 210px;
+.topbar-inner {
+    max-width: var(--site-w); margin: 0 auto;
+    padding: 0.7rem 1rem;
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 0.35rem 1.5rem;
 }
 
-/* vertical expand when open (toggled by JS) */
-.nav-cube.is-open {
-    width: 210px;
-    height: 208px;
-}
-
-.cube-head {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 56px;
-    width: 100%;
-    padding: 0;
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
+.brand {
+    font-family: var(--scriptive-font-family); font-weight: 700;
+    font-size: 1.15rem; letter-spacing: -0.02em;
+    color: var(--primary-font-color); text-decoration: none;
     white-space: nowrap;
 }
+.brand .tilde { color: var(--accent); }
 
-.cube-icon {
-    flex: 0 0 53.5px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    padding-bottom: 10px;
+.topnav {
+    margin-left: auto;
+    display: flex; flex-wrap: wrap; gap: 0.9rem 1.1rem;
+    font-family: var(--monospace-font-family); font-size: 0.74rem;
+    text-transform: lowercase;
 }
+.topnav a { color: var(--muted); text-decoration: none; }
+.topnav a::before { content: "/"; color: var(--faint); margin-right: 1px; }
+.topnav a:hover { color: var(--primary-font-color); text-decoration: underline; }
+.topnav a[aria-current="page"] { color: var(--accent-ink); font-weight: 700; }
 
-.cube-label {
-    padding-left: 17px;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    font-size: 1.2rem;
-    padding-bottom: 6px;
-    font-family: var(--scriptive-font-family);
-    font-weight: 700;
-    font-optical-sizing: auto;
+@media (max-width: 560px) {
+    .topnav { margin-left: 0; width: 100%; }
 }
-.nav-cube:hover .cube-label,
-.nav-cube.is-open .cube-label { opacity: 1; }
-
-.cube-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0 17px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: right;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    font-family: var(--scriptive-font-family);
-    font-weight: 500;
-    font-optical-sizing: auto;
-}
-.nav-cube.is-open .cube-menu { opacity: 1; }
-
-.cube-menu a {
-    color: #4d2c01;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-.cube-menu a:hover { text-decoration: underline; }

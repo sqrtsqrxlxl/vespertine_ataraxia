@@ -1,16 +1,43 @@
-/* Here goes global variables */
+/* ============================================================
+   global.css — site-wide design system
+   Warm paper + brown ink. Neubrutalist cards. TUI accents.
+   Serif body, grotesk headings, mono for infrastructure.
+   Mobile-first.
+   ============================================================ */
 
-:root{
+:root {
     --primary-background: #f8f0ea;
+    --paper:              #fffaf3;
+    --card:               #faefe3;
     --primary-font-color: #2b1903;
-    --scriptive-font-family: "Space Grotesk", monospace;
-    --serif-font-family: "Noto Serif", Georgia, 'Times New Roman', Times, serif;
-    --monospace-font-family: "JetBrains Mono", monospace;
+    --line:               #4d2c01;
+    --muted:              #816541;
+    --faint:              #a89a88;
+    --accent:             #d97757;
+    --accent-ink:         #b14e2c;
+
+    --scriptive-font-family: "Space Grotesk", system-ui, sans-serif;
+    --serif-font-family: "Noto Serif", "Noto Serif SC", Georgia, 'Times New Roman', Times, serif;
+    --monospace-font-family: "JetBrains Mono", ui-monospace, monospace;
+
+    --shadow:    4px 4px 0 var(--line);
+    --shadow-lg: 6px 6px 0 var(--line);
+
+    --measure: 68ch;     /* tight word-wrap for prose */
+    --site-w:  1080px;
 }
 
-html {
-    background-color: var(--primary-background);
-    font-family: "Noto Serif", serif;
+* { box-sizing: border-box; }
+
+html { background-color: var(--primary-background); }
+
+body {
+    margin: 0;
+    color: var(--primary-font-color);
+    font-family: var(--serif-font-family);
+    font-size: 1rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
 }
 
 p {
@@ -18,70 +45,110 @@ p {
     font-weight: 400;
     font-style: normal;
 }
-  
-body {
-    margin: 0 auto;
-    padding: 1rem;
-    line-height: 1.5;
+
+a { color: var(--accent-ink); text-underline-offset: 3px; }
+a:hover { color: var(--primary-font-color); }
+
+img { max-width: 100%; display: block; }
+
+/* ---------- background decoration ---------- */
+/* Contour map, kept very faint. Uses a pre-rasterized PNG — painting the
+   4.3 MB source SVG live is too heavy for the compositor. The radial mask
+   thins the lines under the central reading column and lets them breathe
+   at the edges, so prose stays readable without losing the texture. */
+body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: -1;
+    pointer-events: none;
+    background-image: url("/contours_raster.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.09;
+    -webkit-mask-image: radial-gradient(120% 100% at 50% 38%,
+        rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.55) 52%, #000 100%);
+    mask-image: radial-gradient(120% 100% at 50% 38%,
+        rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.55) 52%, #000 100%);
 }
-  
-* {
-    box-sizing: border-box;
-    font-size: 1.05rem;
-}
-  
-h1 {
-    margin: 1rem 0;
-    font-size: 4rem;
-    text-align: left;
-    margin-bottom: 2rem;
-    font-family: var(--scriptive-font-family);
-    font-weight: 900;
-    font-optical-sizing: auto;
-    color: var(--primary-font-color);
-}
+
+/* ---------- layout shells ---------- */
 
 .wrapper {
-  width: 1000px;
-  max-width: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: calc((100% - 1000px) * 0.43);
-  margin-right: calc((100% - 1000px) * 0.57);
-  position: relative;
-  z-index: 1;
+    max-width: var(--site-w);
+    margin: 0 auto;
+    padding: 1rem 1rem 4rem;
 }
 
-@media (max-width: 1000px){
-    .wrapper {
-        margin: 0 auto;
-    }
+.wrapper.is-prose {
+    max-width: calc(var(--measure) + 2rem);
 }
 
-/* Background Decoration */
+/* ---------- headings ---------- */
 
-.contour-bg {
-  color: #4e1605;
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/contours_lake_district.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.1;
-  z-index: -1;
+h1, h2, h3 {
+    font-family: var(--scriptive-font-family);
+    color: var(--primary-font-color);
+    line-height: 1.15;
+    font-optical-sizing: auto;
 }
 
-/* i18n */
+h1 {
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin: 1.6rem 0 1.2rem;
+}
+
+h2 { font-size: 1.35rem; margin: 2.6rem 0 1rem; }
+
+.section-head {
+    display: flex; align-items: baseline; gap: 0.8rem;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 0.4rem; margin: 3rem 0 1.4rem;
+}
+.section-head h2 {
+    margin: 0; font-size: 1.2rem;
+    text-transform: uppercase; letter-spacing: 0.04em;
+}
+.section-head .more {
+    margin-left: auto;
+    font-family: var(--monospace-font-family); font-size: 0.74rem;
+    text-decoration: none;
+}
+
+/* ---------- neubrutalist card ---------- */
+
+.card {
+    background: var(--card);
+    border: 2px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: 1.1rem 1.25rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+a.card { display: block; color: inherit; text-decoration: none; }
+.card.lift:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-lg); }
+
+/* ---------- tags / badges ---------- */
+
+.tag {
+    display: inline-block;
+    font-family: var(--monospace-font-family); font-size: 0.68rem;
+    border: 1.5px solid var(--line);
+    padding: 0.05rem 0.45rem;
+    background: var(--paper); color: var(--line);
+    text-decoration: none; white-space: nowrap;
+}
+
+/* ---------- i18n ---------- */
 
 *:lang(zh-CN) {
     font-family: "Noto Serif SC", serif;
 }
 
-h1:lang(zh-CN) {
+h1:lang(zh-CN), h2:lang(zh-CN), h3:lang(zh-CN) {
     font-family: "Noto Serif SC", serif;
+    font-weight: 900;
 }
 
 *:lang(ja-JP) {

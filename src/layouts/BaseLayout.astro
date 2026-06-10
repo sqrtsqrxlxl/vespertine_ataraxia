@@ -4,6 +4,7 @@ import Footer from '../components/footer.astro';
 import '../styles/global.css';
 const { pageTitle } = Astro.props;
 const { pageLang } = Astro.props;
+const { prose } = Astro.props;
 ---
 
 <html lang="en">
@@ -23,12 +24,12 @@ const { pageLang } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <div class="contour-bg" aria-hidden="true"></div>
     <Header />
-    <div class="wrapper">
+    <main class:list={["wrapper", { "is-prose": prose }]}>
+      <slot name="before-title" />
       <h1 lang={pageLang}>{pageTitle}</h1>
-      <slot />  
-    </div>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

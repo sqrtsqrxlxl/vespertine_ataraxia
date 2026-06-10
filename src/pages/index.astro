@@ -1,8 +1,63 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPostCard from "../components/blogpost_card.astro";
+
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true })) as any[];
+const recent = allPosts
+    .sort((a, b) => new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime())
+    .slice(0, 4);
+
 const pageTitle = "Vespertine";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	
+    <section aria-labelledby="recent">
+        <div class="section-head">
+            <h2 id="recent">Recent Writing</h2>
+            <a class="more" href="/blog">view all →</a>
+        </div>
+        <ul class="post-list">
+            {recent.map((post: any) => (
+                <BlogPostCard
+                    blogTitle={post.frontmatter.title}
+                    blogDescription={post.frontmatter.description}
+                    blogDate={post.frontmatter.pubDate}
+                    blogUrl={post.url}
+                    blogLang={post.frontmatter.lang}
+                />
+            ))}
+        </ul>
+    </section>
+
+    <section aria-labelledby="elsewhere">
+        <div class="section-head">
+            <h2 id="elsewhere">Elsewhere</h2>
+        </div>
+        <div class="doors">
+            <a class="card lift door" href="/photography">
+                <span class="path">~/photography</span>
+                <h3>Photography <span class="arrow">→</span></h3>
+            </a>
+            <a class="card lift door" href="/works">
+                <span class="path">~/works</span>
+                <h3>Works <span class="arrow">→</span></h3>
+            </a>
+            <a class="card lift door" href="/about">
+                <span class="path">~/about</span>
+                <h3>About <span class="arrow">→</span></h3>
+            </a>
+        </div>
+    </section>
 </BaseLayout>
+
+<style>
+    .doors { display: grid; grid-template-columns: 1fr; gap: 1.1rem; }
+    @media (min-width: 700px) { .doors { grid-template-columns: repeat(3, 1fr); } }
+    .door h3 { margin: 0; font-size: 1.05rem; }
+    .door h3 .arrow { color: var(--accent); }
+    .door .path {
+        font-family: var(--monospace-font-family);
+        font-size: 0.68rem; color: var(--faint);
+        display: block; margin-bottom: 0.45rem;
+    }
+</style>
